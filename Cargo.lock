@@ -222,7 +222,7 @@ checksum = "f878195a49cee50e006b02b93cf7e0a95a38ac7b776b4c4d9cc1207cd20fcb3d"
 
 [[package]]
 name = "githuber"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "derive_builder",
  "isahc",
