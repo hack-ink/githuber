@@ -13,7 +13,7 @@ use isahc::{
 		header::ACCEPT, request::Builder as RequestBuilder, Method as HttpMethod, Request,
 		Response, Uri,
 	},
-	Body as IsahcBody, HttpClient, HttpClientBuilder,
+	AsyncBody as IsahcBody, HttpClient, HttpClientBuilder,
 };
 use tracing::trace;
 // --- githuber ---
