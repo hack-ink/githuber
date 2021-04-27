@@ -13,7 +13,7 @@ use isahc::{
 		header::ACCEPT, request::Builder as RequestBuilder, Method as HttpMethod, Request,
 		Response, Uri,
 	},
-	AsyncBody as IsahcBody, HttpClient, HttpClientBuilder,
+	AsyncBody as IsahcBody, Body as IsahcBodySync, HttpClient, HttpClientBuilder,
 };
 use tracing::trace;
 // --- githuber ---
@@ -21,12 +21,10 @@ use crate::pager::Pager;
 
 type IsahcRequest<B> = Request<B>;
 type IsahcResponse = Response<IsahcBody>;
+type IsahcResponseSync = Response<IsahcBodySync>;
 type IsahcResult<T> = Result<T, isahc::Error>;
 
-pub trait GithubApi<B>: Clone + Debug
-where
-	B: Into<IsahcBody>,
-{
+pub trait GithubApi<B>: Clone + Debug {
 	const HTTP_METHOD: HttpMethod;
 	const PATH: &'static str;
 	const ACCEPT: &'static str;
@@ -94,6 +92,17 @@ impl Githuber {
 		trace!("{}", request.uri());
 
 		self.http_client.send_async(request).await
+	}
+
+	pub fn send_sync<B>(&self, request: impl GithubApi<B>) -> IsahcResult<IsahcResponseSync>
+	where
+		B: Into<IsahcBodySync>,
+	{
+		let request = request.build_request();
+
+		trace!("{}", request.uri());
+
+		self.http_client.send(request)
 	}
 
 	pub async fn send_with_pager<B>(

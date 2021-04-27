@@ -72,3 +72,27 @@ struct Body<'a> {
 	#[serde(skip_serializing_if = "Option::is_none")]
 	assignees: &'a Option<Vec<String>>,
 }
+
+#[test]
+fn create_an_issue_should_work() {
+	// --- crates.io ---
+	use isahc::ReadResponseExt;
+	// --- githuber ---
+	use crate::{responses::issue::Issue, Githuber};
+
+	let githuber = Githuber::from_env();
+	let issue = githuber
+		.send_sync(
+			CreateAnIssueBuilder::default()
+				.owner("AurevoirXavier")
+				.repo("TEST")
+				.title("TEST")
+				.build()
+				.unwrap(),
+		)
+		.unwrap()
+		.json::<Issue>()
+		.unwrap();
+
+	dbg!(issue);
+}
