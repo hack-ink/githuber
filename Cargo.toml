@@ -1,24 +1,24 @@
 [package]
 authors     = ["Xavier Lau <c.estlavie@icloud.com>"]
 description = "githuber"
-edition     = "2018"
-homepage    = "https://githuber.l2ust.world"
+edition     = "2021"
+homepage    = "https://githuber.hack.ink"
 license     = "GPL-3.0"
 name        = "githuber"
 readme      = "README.md"
-repository  = "https://github.com/l2ust/githuber"
+repository  = "https://github.com/hack-ink/githuber"
 version     = "0.3.0-alpha.1"
 
 [badges]
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-derive_builder = { version = "0.10.2" }
-isahc          = { version = "1.5.0" }
-serde          = { version = "1.0.130", features = ["derive"] }
-serde_json     = { version = "1.0.68" }
-tracing        = { version = "0.1.29" }
+derive_builder = { version = "0.11" }
+isahc          = { version = "1.7" }
+serde          = { version = "1.0", features = ["derive"] }
+serde_json     = { version = "1.0" }
+tracing        = { version = "0.1" }
 
 [dev-dependencies]
-isahc             = { version = "1.5.0", features = ["json"] }
-pretty_env_logger = { version = "0.4.0" }
+isahc             = { version = "1.7", features = ["json"] }
+pretty_env_logger = { version = "0.4" }
