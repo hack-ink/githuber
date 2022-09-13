@@ -1,7 +1,7 @@
-// --- crates.io ---
+// crates.io
 use derive_builder::Builder as DeriveBuilder;
 use isahc::http::{Method as HttpMethod, Uri};
-// --- githuber ---
+// hack-ink
 use crate::{uri, GithubApi};
 
 #[derive(Clone, Debug, Default, DeriveBuilder)]
@@ -35,10 +35,10 @@ impl GithubApi<()> for ListReleases {
 
 #[test]
 fn list_releases_should_work() {
-	// --- crates.io ---
+	// crates.io
 	use isahc::ReadResponseExt;
 	use serde_json::Value;
-	// --- githuber ---
+	// hack-ink
 	use crate::Githuber;
 
 	let githuber = Githuber::from_env();

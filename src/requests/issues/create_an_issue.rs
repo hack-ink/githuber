@@ -1,10 +1,10 @@
 //! GitHub API reference: https://docs.github.com/en/rest/reference/issues#create-an-issue
 
-// --- crates.io ---
+// crates.io
 use derive_builder::Builder as DeriveBuilder;
 use isahc::http::{Method as HttpMethod, Uri};
 use serde::Serialize;
-// --- githuber ---
+// hack-ink
 use crate::{api, GithubApi};
 
 #[derive(Clone, Debug, Default, DeriveBuilder)]
@@ -23,12 +23,12 @@ pub struct CreateAnIssue {
 	/// The contents of the issue.
 	#[builder(default)]
 	pub body: Option<String>,
-	// --- deprecated ---
+	// @deprecated
 	// /// assignee	string or null	body
 	// /// Login for the user that this issue should be assigned to. NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise. This field is deprecated.
 	// #[builder(default)]
 	// pub assignee: Option<String>,
-	// --- deprecated ---
+	// @deprecated
 	/// milestone	integer or null	body
 	/// The number of the milestone to associate this issue with. NOTE: Only users with push access can set the milestone for new issues. The milestone is silently dropped otherwise.
 	#[builder(default)]
@@ -79,10 +79,10 @@ struct Body<'a> {
 #[test]
 #[ignore]
 fn create_an_issue_should_work() {
-	// --- crates.io ---
+	// crates.io
 	use isahc::ReadResponseExt;
 	use serde_json::Value;
-	// --- githuber ---
+	// hack-ink
 	use crate::Githuber;
 
 	let githuber = Githuber::from_env();

@@ -1,13 +1,14 @@
 #![allow(clippy::tabs_in_doc_comments)]
+#![warn(missing_docs)]
 
 pub mod pager;
 pub mod requests;
 pub mod responses;
 pub mod util;
 
-// --- std ---
+// std
 use std::fmt::Debug;
-// --- crates.io ---
+// crates.io
 use isahc::{
 	http::{
 		header::ACCEPT, request::Builder as RequestBuilder, Method as HttpMethod, Request,
@@ -15,7 +16,7 @@ use isahc::{
 	},
 	AsyncBody as IsahcBody, Body as IsahcBodySync, HttpClient, HttpClientBuilder,
 };
-// --- githuber ---
+// hack-ink
 use crate::pager::Pager;
 
 type IsahcRequest<B> = Request<B>;

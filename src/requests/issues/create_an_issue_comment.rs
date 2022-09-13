@@ -1,10 +1,10 @@
 //! GitHub API reference: https://docs.github.com/en/rest/reference/issues#create-an-issue-comment
 
-// --- crates.io ---
+// crates.io
 use derive_builder::Builder as DeriveBuilder;
 use isahc::http::{Method as HttpMethod, Uri};
 use serde::Serialize;
-// --- githuber ---
+// hack-ink
 use crate::{api, GithubApi};
 
 #[derive(Clone, Debug, Default, DeriveBuilder)]
@@ -46,10 +46,10 @@ struct Body<'a> {
 #[test]
 #[ignore]
 fn create_an_issue_comment_should_work() {
-	// --- crates.io ---
+	// crates.io
 	use isahc::ReadResponseExt;
 	use serde_json::Value;
-	// --- githuber ---
+	// hack-ink
 	use crate::Githuber;
 
 	let githuber = Githuber::from_env();

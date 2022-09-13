@@ -1,7 +1,7 @@
-// --- std ---
+// std
 #[cfg(test)]
 use std::env;
-// --- githuber ---
+// hack-ink
 #[cfg(test)]
 use crate::Githuber;
 
@@ -74,7 +74,7 @@ impl Githuber {
 
 #[cfg(test)]
 mod tests {
-	// --- crates.io ---
+	// crates.io
 	use isahc::http::Uri;
 
 	#[derive(Clone, Debug, Default)]

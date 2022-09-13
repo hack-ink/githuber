@@ -1,7 +1,7 @@
-// --- crates.io ---
+// crates.io
 use derive_builder::Builder as DeriveBuilder;
 use isahc::http::{Method as HttpMethod, Uri};
-// --- githuber ---
+// hack-ink
 use crate::{uri, GithubApi};
 
 #[derive(Clone, Debug, Default, DeriveBuilder)]
