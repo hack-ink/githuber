@@ -6,12 +6,11 @@
 .vscode
 
 # Package Manager
-## cargo
+## Cargo
 target
-## npm
-node_modules
+## mdBook
+book
+index.html
 
-# Test Data
-## Pangolin Local Testnet
-tests/local-testnet/data
-tests/local-testnet/log
+# Test data
+test-data
