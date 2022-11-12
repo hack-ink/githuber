@@ -1,0 +1,18 @@
+[package]
+authors     = ["Xavier Lau <xavier@inv.cafe>"]
+description = "api-impl"
+edition     = "2021"
+homepage    = "https://githuber.hack.ink"
+license     = "GPL-3.0"
+name        = "api-impl"
+readme      = "README.md"
+repository  = "https://github.com/hack-ink/githuber"
+version     = "0.4.0"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+convert_case = { version = "0.6" }
+quote        = { version = "1.0" }
+syn          = { version = "1.0", features = ["full"] }
