@@ -7,7 +7,7 @@ license     = "GPL-3.0"
 name        = "api-impl"
 readme      = "README.md"
 repository  = "https://github.com/hack-ink/githuber"
-version     = "0.4.0"
+version     = "0.4.0-rc1"
 
 [lib]
 proc-macro = true
