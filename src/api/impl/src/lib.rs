@@ -29,10 +29,10 @@ impl Parse for ApiProperty {
 			if input.peek(LitStr) {
 				input.parse::<LitStr>()?.value()
 			} else {
-				unreachable!("not `LitStr`");
+				panic!("expect a `LitStr` here");
 			}
 		} else {
-			unreachable!("not `Token![=]`")
+			panic!("expect a `Token![=]` here")
 		};
 
 		Ok(match name.as_str() {
@@ -40,7 +40,7 @@ impl Parse for ApiProperty {
 			"method" => ApiProperty::Method(value),
 			"accept" => ApiProperty::Accept(value),
 			"uri" => ApiProperty::Uri(value),
-			property => unreachable!("unknown property {property:?}"),
+			property => panic!("unknown property {property:?}"),
 		})
 	}
 }
@@ -178,7 +178,9 @@ pub fn api(_: TokenStream, input: TokenStream) -> TokenStream {
 						api_payload_ess_params.push(field.ident);
 						api_payload_ess_params_tys.push(field.ty);
 					},
-					ident => unreachable!("unknown ident {ident:?}"),
+					ident => panic!(
+						"expect one of the [\"path_param\", \"payload_ess_param\"] buf found {ident:?}"
+					),
 				}
 			}
 		});
