@@ -38,7 +38,7 @@ pub fn api_client() -> Result<ApiClient> {
 	Ok(ApiClient(
 		ClientBuilder::new()
 			.default_headers(HeaderMap::from_iter([
-				(USER_AGENT, "GitHuber-0.4.0".parse()?),
+				(USER_AGENT, "GitHuber-0.4.1".parse()?),
 				(AUTHORIZATION, env::var("GITHUB_TOKEN")?.parse()?),
 			]))
 			.build()?,
