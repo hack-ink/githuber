@@ -1,8 +1,10 @@
 [package]
 authors     = ["Xavier Lau <xavier@inv.cafe>"]
+categories  = ["web-programming::http-client"]
 description = "A modern ergonomic GitHub REST API Rust binding."
 edition     = "2021"
 homepage    = "https://githuber.hack.ink"
+keywords    = ["github", "github-api"]
 license     = "GPL-3.0"
 name        = "githuber"
 readme      = "README.md"
