@@ -1,5 +1,5 @@
 /// Abstraction of GitHub REST API.
-pub trait Api<'a> {
+pub trait Api {
 	/// GitHub REST APIs' base prefix.
 	const BASE_URI: &'static str = "https://api.github.com";
 	/// Request's header `Accept`'s value.
@@ -10,7 +10,7 @@ pub trait Api<'a> {
 }
 
 /// Extended GitHub REST API.
-pub trait ApiExt<'a>: Api<'a> {
+pub trait ApiExt: Api {
 	/// HTTP method.
 	const METHOD: Method;
 

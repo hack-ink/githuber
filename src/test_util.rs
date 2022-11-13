@@ -12,9 +12,9 @@ use crate::prelude::*;
 
 pub struct ApiClient(Client);
 impl ApiClient {
-	pub async fn get<'a, R>(&self, request: R) -> Result<Value>
+	pub async fn get<R>(&self, request: R) -> Result<Value>
 	where
-		R: ApiExt<'a>,
+		R: ApiExt,
 	{
 		let response = self
 			.0

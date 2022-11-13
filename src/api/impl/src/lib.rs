@@ -29,10 +29,10 @@ impl Parse for ApiProperty {
 			if input.peek(LitStr) {
 				input.parse::<LitStr>()?.value()
 			} else {
-				unreachable!()
+				unreachable!("not `LitStr`");
 			}
 		} else {
-			unreachable!()
+			unreachable!("not `Token![=]`")
 		};
 
 		Ok(match name.as_str() {
@@ -40,7 +40,7 @@ impl Parse for ApiProperty {
 			"method" => ApiProperty::Method(value),
 			"accept" => ApiProperty::Accept(value),
 			"uri" => ApiProperty::Uri(value),
-			_ => unreachable!(),
+			property => unreachable!("unknown property {property:?}"),
 		})
 	}
 }
@@ -178,7 +178,7 @@ pub fn api(_: TokenStream, input: TokenStream) -> TokenStream {
 						api_payload_ess_params.push(field.ident);
 						api_payload_ess_params_tys.push(field.ty);
 					},
-					_ => unreachable!(),
+					ident => unreachable!("unknown ident {ident:?}"),
 				}
 			}
 		});
@@ -290,7 +290,7 @@ pub fn api(_: TokenStream, input: TokenStream) -> TokenStream {
 				}
 			)*
 		}
-		impl #api_generics Api #api_generics for #api_name #api_generics {
+		impl #api_generics Api for #api_name #api_generics {
 			const ACCEPT: &'static str = #api_accept;
 
 			fn api(&self) -> String {
@@ -301,7 +301,7 @@ pub fn api(_: TokenStream, input: TokenStream) -> TokenStream {
 				)
 			}
 		}
-		impl #api_generics ApiExt #api_generics for #api_name #api_generics {
+		impl #api_generics ApiExt for #api_name #api_generics {
 			const METHOD: Method = Method::#api_method;
 
 			fn payload_params(&self) -> Vec<(&'static str, String)> {
