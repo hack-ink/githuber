@@ -213,15 +213,15 @@ pub fn api(_: TokenStream, input: TokenStream) -> TokenStream {
 		#api_vis struct #api_name #api_generics {
 			#(
 				#[allow(missing_docs)]
-				#api_path_params: #api_path_params_tys,
+				#api_vis #api_path_params: #api_path_params_tys,
 			)*
 			#(
 				#[allow(missing_docs)]
-				#api_payload_ess_params: #api_payload_ess_params_tys,
+				#api_vis #api_payload_ess_params: #api_payload_ess_params_tys,
 			)*
 			#(
 				#[allow(missing_docs)]
-				#api_payload_opt_params: Option<#api_payload_opt_params_tys>,
+				#api_vis #api_payload_opt_params: Option<#api_payload_opt_params_tys>,
 			)*
 		}
 		impl #api_generics #api_name #api_generics {
