@@ -11,11 +11,14 @@ use crate::prelude::*;
 #[api_impl::api]
 #[properties(
 	category = "commits",
+	method = "GET",
 	accept = "application/vnd.github+json",
 	uri = "/repos/{}/{}/commits"
 )]
 pub struct ListCommits<'a> {
+	#[path_param]
 	pub owner: &'a str,
+	#[path_param]
 	pub repo: &'a str,
 	pub sha: Option<&'a str>,
 	pub path: Option<&'a str>,
@@ -29,24 +32,32 @@ pub struct ListCommits<'a> {
 #[api_impl::api]
 #[properties(
 	category = "commits",
+	method = "GET",
 	accept = "application/vnd.github+json",
 	uri = "/repos/{}/{}/commits/{}/branches-where-head"
 )]
 pub struct ListBranchesForHeadCommit<'a> {
+	#[path_param]
 	pub owner: &'a str,
+	#[path_param]
 	pub repo: &'a str,
+	#[path_param]
 	pub commit_sha: &'a str,
 }
 
 #[api_impl::api]
 #[properties(
 	category = "commits",
+	method = "GET",
 	accept = "application/vnd.github+json",
 	uri = "/repos/{}/{}/commits/{}/pulls"
 )]
 pub struct ListPullRequestsAssociatedWithACommit<'a> {
+	#[path_param]
 	pub owner: &'a str,
+	#[path_param]
 	pub repo: &'a str,
+	#[path_param]
 	pub commit_sha: &'a str,
 	pub per_page: Option<u8>,
 	pub page: Option<u16>,
@@ -55,12 +66,16 @@ pub struct ListPullRequestsAssociatedWithACommit<'a> {
 #[api_impl::api]
 #[properties(
 	category = "commits",
+	method = "GET",
 	accept = "application/vnd.github+json",
 	uri = "/repos/{}/{}/commits/{}"
 )]
 pub struct GetACommit<'a> {
+	#[path_param]
 	pub owner: &'a str,
+	#[path_param]
 	pub repo: &'a str,
+	#[path_param]
 	pub r#ref: &'a str,
 	pub per_page: Option<u8>,
 	pub page: Option<u16>,
@@ -69,12 +84,16 @@ pub struct GetACommit<'a> {
 #[api_impl::api]
 #[properties(
 	category = "commits",
+	method = "GET",
 	accept = "application/vnd.github+json",
 	uri = "/repos/{}/{}/compare/{}"
 )]
 pub struct CompareTwoCommits<'a> {
+	#[path_param]
 	pub owner: &'a str,
+	#[path_param]
 	pub repo: &'a str,
+	#[path_param]
 	pub basehead: &'a str,
 	pub per_page: Option<u8>,
 	pub page: Option<u16>,

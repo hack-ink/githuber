@@ -14,13 +14,13 @@ pub struct ApiClient(Client);
 impl ApiClient {
 	pub async fn get<'a, R>(&self, request: R) -> Result<Value>
 	where
-		R: ApiGet<'a>,
+		R: ApiExt<'a>,
 	{
 		let response = self
 			.0
 			.get(request.api())
 			.header(ACCEPT, R::ACCEPT)
-			.query(&request.query_parameters())
+			.query(&request.payload_params())
 			.send()
 			.await?
 			.json::<Value>()

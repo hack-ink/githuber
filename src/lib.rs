@@ -7,7 +7,7 @@
 pub mod prelude {
 	//! GitHuber prelude.
 
-	pub use crate::api::{ApiGet, ApiPost};
+	pub use crate::api::{Api, ApiExt, Method};
 }
 
 pub mod api;
