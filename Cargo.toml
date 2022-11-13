@@ -9,10 +9,10 @@ license     = "GPL-3.0"
 name        = "githuber"
 readme      = "README.md"
 repository  = "https://github.com/hack-ink/githuber"
-version     = "0.4.1"
+version     = "0.4.2"
 
 [dependencies]
-api-impl = { version = "0.4.1", path = "src/api/impl" }
+api-impl = { version = "0.4.2", path = "src/api/impl" }
 
 [dev-dependencies]
 anyhow             = { version = "1.0" }
