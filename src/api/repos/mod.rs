@@ -297,9 +297,9 @@ pub struct TransferARepository<'a> {
 	pub repo: &'a str,
 	#[payload_ess_param]
 	pub new_owner: &'a str,
-	pub new_name: &'a str,
+	pub new_name: Option<&'a str>,
 	// TODO: JSON?
-	pub team_ids: &'a str,
+	pub team_ids: Option<&'a str>,
 }
 
 #[api_impl::api]
