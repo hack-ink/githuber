@@ -1,28 +1,37 @@
-//! Commits related methods.
-//!
-//! GitHub reference(s):
-//! - <https://docs.github.com/en/rest/repos>
+/// Abstraction of GitHub REST API.
+pub trait Api<'a> {
+	/// GitHub REST APIs' base prefix.
+	const BASE_URI: &'static str = "https://api.github.com";
+	/// Request's header `Accept`'s value.
+	const ACCEPT: &'static str;
 
-#[cfg(test)] mod test;
+	/// Request's target URI/URL.
+	fn api(&self) -> String;
+}
 
-// hack-ink
-use crate::prelude::*;
+/// Extended GitHub REST API.
+pub trait ApiExt<'a>: Api<'a> {
+	/// HTTP method.
+	const METHOD: Method;
 
-#[api_impl::api]
-#[properties(
-	category = "repos",
-	method = "GET",
-	accept = "application/vnd.github+json",
-	uri = "/orgs/{}/repos"
-)]
-pub struct ListOrganizationRepositories<'a> {
-	#[path_param]
-	pub org: &'a str,
-	pub r#type: Option<&'a str>,
-	pub sort: Option<&'a str>,
-	pub direction: Option<&'a str>,
-	pub per_page: Option<u8>,
-	pub page: Option<u16>,
+	/// Request's payload parameters.
+	///
+	/// Can be one of:
+	/// - Body parameters
+	/// - Query parameters
+	fn payload_params(&self) -> Vec<(&'static str, String)>;
+}
+
+/// HTTP methods.
+pub enum Method {
+	/// HTTP GET method.
+	Get,
+	/// HTTP PATCH method.
+	Patch,
+	/// HTTP POST method.
+	Post,
+	/// HTTP PUT method.
+	Put,
 }
 
 #[api_impl::api]

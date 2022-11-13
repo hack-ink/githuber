@@ -16,3 +16,9 @@ proc-macro = true
 convert_case = { version = "0.6" }
 quote        = { version = "1.0" }
 syn          = { version = "1.0", features = ["full"] }
+
+[features]
+debug = [
+	# crates.io
+	"syn/extra-traits",
+]

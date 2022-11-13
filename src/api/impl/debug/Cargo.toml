@@ -1,0 +1,16 @@
+[package]
+authors     = ["Xavier Lau <xavier@inv.cafe>"]
+description = "api-impl-debug"
+edition     = "2021"
+homepage    = "https://githuber.hack.ink"
+license     = "GPL-3.0"
+name        = "api-impl-debug"
+readme      = "README.md"
+repository  = "https://github.com/hack-ink/githuber"
+version     = "0.0.0"
+
+[dependencies]
+api-impl = { version = "0.4.0-rc1", path = "..", features = ["debug"] }
+
+[workspace]
+exclude = []
