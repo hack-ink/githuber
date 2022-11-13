@@ -40,7 +40,9 @@ impl Parse for ApiProperty {
 			"method" => ApiProperty::Method(value),
 			"accept" => ApiProperty::Accept(value),
 			"uri" => ApiProperty::Uri(value),
-			property => panic!("unknown property {property:?}"),
+			property => panic!(
+				"expect one of the [\"category\", \"method\", \"accept\", \"uri\"] but found {property:?}"
+			),
 		})
 	}
 }
@@ -152,21 +154,26 @@ pub fn api(_: TokenStream, input: TokenStream) -> TokenStream {
 	let mut api_payload_opt_params = Vec::new();
 	let mut api_payload_opt_params_tys = Vec::new();
 
-	if let Fields::Named(fields) = api_struct.fields {
+	{
+		let Fields::Named(fields) = api_struct.fields else {
+			panic!("expect a `Fields::Named` here");
+		};
+
 		fields.named.into_iter().for_each(|field| {
 			if field.attrs.is_empty() {
-				if let Type::Path(path) = field.ty {
-					if &path.path.segments[0].ident.to_string() == "Option" {
-						api_payload_opt_params.push(field.ident);
+				let Type::Path(path) = field.ty else { panic!("expect a `Path` here"); };
 
-						if let PathArguments::AngleBracketed(args) =
-							&path.path.segments[0].arguments
-						{
-							if let GenericArgument::Type(ty) = &args.args[0] {
-								api_payload_opt_params_tys.push(ty.to_owned());
-							}
-						}
-					}
+				if &path.path.segments[0].ident.to_string() == "Option" {
+					api_payload_opt_params.push(field.ident);
+
+					let PathArguments::AngleBracketed(args) = &path.path.segments[0].arguments else {
+						panic!("expect a `PathArguments::AngleBracketed` here");
+					};
+					let GenericArgument::Type(ty) = &args.args[0] else { panic!("expect a `GenericArgument::Type` here"); };
+
+					api_payload_opt_params_tys.push(ty.to_owned());
+				} else {
+					panic!("expect an `Option` here");
 				}
 			} else {
 				match field.attrs[0].path.get_ident().unwrap().to_string().as_str() {
@@ -179,7 +186,7 @@ pub fn api(_: TokenStream, input: TokenStream) -> TokenStream {
 						api_payload_ess_params_tys.push(field.ty);
 					},
 					ident => panic!(
-						"expect one of the [\"path_param\", \"payload_ess_param\"] buf found {ident:?}"
+						"expect one of the [\"path_param\", \"payload_ess_param\"] but found {ident:?}"
 					),
 				}
 			}
