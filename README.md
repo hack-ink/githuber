@@ -5,7 +5,7 @@
 
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Checks](https://github.com/hack-ink/githuber/actions/workflows/checks.yml/badge.svg?branch=main)](https://github.com/hack-ink/githuber/actions/workflows/checks.yml)
-[![Docs](https://img.shields.io/docsrs/githuber)](https://docs.rs/githuber/latest/githuber)
+[![Docs](https://img.shields.io/docsrs/githuber)](https://docs.rs/githuber)
 [![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/hack-ink/githuber)](https://github.com/hack-ink/githuber/tags)
 [![GitHub code lines](https://tokei.rs/b1/github/hack-ink/githuber)](https://github.com/hack-ink/githuber)
 [![GitHub last commit](https://img.shields.io/github/last-commit/hack-ink/githuber?color=red&style=plastic)](https://github.com/hack-ink/githuber)
@@ -15,7 +15,7 @@
 </div>
 
 ## Documentation
-- [`docs.rs`](https://docs.rs/githuber/latest/githuber)
+- [`docs.rs`](https://docs.rs/githuber)
 
 ## Contribution
 - If you have a question or request a new feature, [start a discussion](https://github.com/hack-ink/githuber/discussions/new).
