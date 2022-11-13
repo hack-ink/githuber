@@ -10,7 +10,7 @@ repository  = "https://github.com/hack-ink/githuber"
 version     = "0.0.0"
 
 [dependencies]
-api-impl = { version = "0.4.0-rc1", path = "..", features = ["debug"] }
+api-impl = { version = "0.4.0", path = "..", features = ["debug"] }
 
 [workspace]
 exclude = []
