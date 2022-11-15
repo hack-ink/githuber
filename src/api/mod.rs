@@ -1,6 +1,7 @@
 //! GitHub REST API collections.
 
 pub mod commits;
+pub mod issues;
 pub mod repos;
 
 /// Abstraction of GitHub REST API.
