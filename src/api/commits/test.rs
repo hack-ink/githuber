@@ -31,5 +31,12 @@ async fn get_a_commit_should_work() {
 
 #[tokio::test]
 async fn compare_two_commits_should_work() {
-	api_client().unwrap().get(compare_two_commits("hack-ink", "githuber", "main...archived")).await.unwrap();
+	let request = compare_two_commits("hack-ink", "githuber", "main...archived");
+
+	assert_eq!(
+		request.api(),
+		"https://api.github.com/repos/hack-ink/githuber/compare/main...archived"
+	);
+
+	api_client().unwrap().get(request).await.unwrap();
 }
