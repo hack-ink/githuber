@@ -128,7 +128,7 @@ pub fn api(_: TokenStream, input: TokenStream) -> TokenStream {
 
 	api_attrs
 		.into_iter()
-		.filter(|attr| attr.path.is_ident("properties"))
+		.filter(|attr| attr.path().is_ident("properties"))
 		.flat_map(|attr| {
 			attr.parse_args_with(Punctuated::<ApiProperty, Token![,]>::parse_terminated)
 				.unwrap()
@@ -176,7 +176,7 @@ pub fn api(_: TokenStream, input: TokenStream) -> TokenStream {
 					panic!("expect an `Option` here");
 				}
 			} else {
-				match field.attrs[0].path.get_ident().unwrap().to_string().as_str() {
+				match field.attrs[0].path().get_ident().unwrap().to_string().as_str() {
 					"path_param" => {
 						api_path_params.push(field.ident);
 						api_path_params_tys.push(field.ty);
