@@ -9,12 +9,14 @@ license     = "GPL-3.0"
 name        = "githuber"
 readme      = "README.md"
 repository  = "https://github.com/hack-ink/githuber"
-version     = "0.4.3"
+version     = "0.4.4"
 
 [dependencies]
-api-impl = { version = "0.4.3", path = "src/api/impl" }
+# githuber
+api-impl = { version = "0.4", path = "src/api/impl" }
 
 [dev-dependencies]
+# crates.io
 anyhow             = { version = "1.0" }
 reqwest            = { version = "0.11", features = ["json"] }
 serde_json         = { version = "1.0" }
@@ -24,5 +26,6 @@ tracing-subscriber = { version = "0.3" }
 
 [workspace]
 members = [
+	# githuber
 	"src/api/impl",
 ]
