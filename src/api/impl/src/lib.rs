@@ -161,15 +161,20 @@ pub fn api(_: TokenStream, input: TokenStream) -> TokenStream {
 
 		fields.named.into_iter().for_each(|field| {
 			if field.attrs.is_empty() {
-				let Type::Path(path) = field.ty else { panic!("expect a `Path` here"); };
+				let Type::Path(path) = field.ty else {
+					panic!("expect a `Path` here");
+				};
 
 				if &path.path.segments[0].ident.to_string() == "Option" {
 					api_payload_opt_params.push(field.ident);
 
-					let PathArguments::AngleBracketed(args) = &path.path.segments[0].arguments else {
+					let PathArguments::AngleBracketed(args) = &path.path.segments[0].arguments
+					else {
 						panic!("expect a `PathArguments::AngleBracketed` here");
 					};
-					let GenericArgument::Type(ty) = &args.args[0] else { panic!("expect a `GenericArgument::Type` here"); };
+					let GenericArgument::Type(ty) = &args.args[0] else {
+						panic!("expect a `GenericArgument::Type` here");
+					};
 
 					api_payload_opt_params_tys.push(ty.to_owned());
 				} else {
