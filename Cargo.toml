@@ -11,6 +11,14 @@ readme      = "README.md"
 repository  = "https://github.com/hack-ink/githuber"
 version     = "0.4.4"
 
+[profile.ci-dev]
+incremental = false
+inherits    = "dev"
+
+[profile.ci-release]
+inherits = "release"
+lto      = true
+
 [dependencies]
 # githuber
 api-impl = { version = "0.4", path = "src/api/impl" }
